@@ -1,0 +1,223 @@
+<!--Lucas de Souza Nascimento Naba-13/04/2023-->
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home</title>
+    <link rel="stylesheet" href="pag_1.css">
+    <style>
+       /*Estilo do slide automatico*/
+        #slider {
+            top: 5px;
+            left: 400px;
+            position: relative;
+            width: 1100px;
+            height: 530px;
+        
+            overflow: hidden;
+            box-shadow: 0 0 30px rgba(0, 0, 0, 0.3);
+        }
+        #slider ul {
+            position: relative;
+            list-style: none;
+            height: 100%;
+            width: 10000%;
+            padding: 0;
+            margin: 0;
+            transition: all 750ms ease;
+            left: 0;
+        }
+        #slider ul li {
+            position: relative;
+            height: 100%;
+        
+            float: left;
+        }
+        #slider ul li img{
+            width: 1100px;
+            height: 530px;
+        }
+        
+        #slider #prev, #slider #next {
+            width: 50px;
+            line-height: 50px;
+            border-radius: 50%;
+            font-size: 2rem;
+            text-shadow: 0 0 20px rgba(0, 0, 0, 0.6);
+            text-align: center;
+            color: white;
+            text-decoration: none;
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            transition: all 150ms ease;
+        }
+        #slider #prev:hover, #slider #next:hover {
+            background-color: rgba(0, 0, 0, 0.5);
+            text-shadow: 0;
+        }
+        #slider #prev {
+            left: 10px;
+        }
+        #slider #next {
+            right: 10px;
+        }
+        </style>
+</head>
+<body>
+    <header>
+        <div style="display: flex; justify-content: center; height: 300px; width: 100%;">
+            <img src="image.png" alt="Logo">
+        </div>
+    </header>
+    <section>
+        <nav>
+            <ul class="menu">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="pag_2.html">Produtos</a></li>
+                <li><a href="pag_3.html">Novidades</a></li>
+                <li><a href="pag_4.html">Sobre</a></li>
+                <li><a href="pag_5.html">Contato</a></li> 
+                <li><a href="#" class="cart">&#128722;</a></li>
+            </ul>
+
+            <form>
+                <input type="search" name="q" placeholder="Pesquise aqui" id="i_pesquisa">
+                <input type="submit" value="Pesquisar">
+            </form>
+        </nav>
+
+        <div id="slider">
+            <ul id="slideWrap"> 
+              <li><img src="https://www.kabum.com.br/conteudo/descricao/297346/img/1920x740.jpg" alt=""></li>
+              <li><img src="https://www.nvidia.com/content/dam/en-zz/Solutions/geforce/graphic-cards/20-series/geforce-rtx-super-series-og-1200x630.jpg" alt=""></li>
+              <li><img src="https://itgadgetsonline.com/wp-content/uploads/2022/12/IntelITbanner.webp" alt=""></li>
+              <li><img src="https://i.ytimg.com/vi/4lro2eeHwRk/maxresdefault.jpg" alt=""></li>
+              <li><img src="https://static.gigabyte.com/StaticFile/Image/Global/a837753549e39ffa0437cd5f84fea112/PromotionBanner/182/webp/1920" alt=""></li>
+            </ul>
+            <a id="prev" href="#">&#8810;</a>
+            <a id="next" href="#">&#8811;</a>
+          </div>
+        
+        
+          <script>
+            var responsiveSlider = function() {
+        //Ativa o slide de imagens
+        var slider = document.getElementById("slider");
+        var sliderWidth = slider.offsetWidth;
+        var slideList = document.getElementById("slideWrap");
+        var count = 1;
+        var items = slideList.querySelectorAll("li").length;
+        var prev = document.getElementById("prev");
+        var next = document.getElementById("next");
+        
+        window.addEventListener('resize', function() {
+          sliderWidth = slider.offsetWidth;
+        });
+        
+        // Verifica que tipo de alterações serão feitas clicando no botão "prev"
+        var prevSlide = function() {
+          if(count > 1) {
+            count = count - 2;
+            slideList.style.left = "-" + count * sliderWidth + "px";
+            count++;
+          }
+          else if(count = 1) {
+            count = items - 1;
+            slideList.style.left = "-" + count * sliderWidth + "px";
+            count++;
+          }
+        };
+        // Verifica que tipo de alterações serão feitas clicando no botão "next"
+        var nextSlide = function() {
+          if(count < items) {
+            slideList.style.left = "-" + count * sliderWidth + "px";
+            count++;
+          }
+          else if(count = items) {
+            slideList.style.left = "0px";
+            count = 1;
+          }
+        };
+        
+        next.addEventListener("click", function() {
+          nextSlide();
+        });
+        
+        prev.addEventListener("click", function() {
+          prevSlide();
+        });
+
+        //Tempo de intervalo entre as imagens
+        setInterval(function() {
+          nextSlide()
+        }, 5000);
+        
+        };
+        
+        window.onload = function() {
+        responsiveSlider();  
+        }
+
+          </script>
+    </section>
+    
+    <!--Sessão invisível para ajustar o posicionamento do slide-->
+    <section class="ghost">
+
+    </section>
+
+    <section class="show">
+        <div class="container">
+            <h1>Bem-vindo à nossa loja virtual</h1>
+            <a href="pag_2.html" class="btn">Ver produtos</a>
+        </div>
+    </section>
+
+    <section class="featured_products">
+        <div class="container">
+            <h2>Produtos em destaque</h2>
+            <div class="products">
+                <div class="product">
+                    <img src="https://images.kabum.com.br/produtos/fotos/181088/processador-amd-ryzen-5-5600g-3-9ghz-4-4ghz-max-turbo-am4-video-integrado-6-nucleos-100-100000252box_1627588230_gg.jpg" alt="Product">
+                    <h3>Processador AMD Ryzen 5 5600G, 3.9GHz (4.4GHz Max Turbo), Cache 19MB, 6 Núcleos, 12 Threads, Vídeo Integrado, AM4 - 100-100000252BOX</h3>
+                    <p>R$ 949,99</p>
+                    <a href="https://www.kabum.com.br/produto/181088/processador-amd-ryzen-5-5600g-3-9ghz-4-4ghz-max-turbo-cache-19mb-6-nucleos-12-threads-video-integrado-am4-100-100000252box" class="btn">Comprar</a>
+                </div>
+                <div class="product">
+                    <img src="https://img.terabyteshop.com.br/produto/g/placa-mae-msi-a320m-a-pro-chipset-a320-amd-am4-matx-ddr4_167588.jpg" alt="Product">
+                    <h3>Placa Mãe MSI A320M-A PRO, Chipset A320, AMD AM4, MATX, DDR4</h3>
+                    <p>R$ 389,90</p>
+                    <a href="https://www.terabyteshop.com.br/produto/24620/placa-mae-msi-a320m-a-pro-chipset-a320-amd-am4-matx-ddr4" class="btn">Comprar</a>
+                </div>
+                <div class="product">
+                    <img src="https://img.terabyteshop.com.br/produto/g/ssd-wd-green-240gb-sata-iii-leitura-545mbs-e-gravacao-430mbs-wds240g3g0a_148557.jpg" alt="Product">
+                    <h3>SSD WD Green 240GB, Sata III, Leitura 545MBs e Gravação 430MBs, WDS240G3G0A</h3>
+                    <p>R$ 189,90</p>
+                    <a href="https://www.terabyteshop.com.br/produto/22118/ssd-wd-green-240gb-sata-iii-leitura-545mbs-e-gravacao-430mbs-wds240g3g0a" class="btn">Comprar</a>
+                </div>
+                <div class="product">
+                  <img src="https://images.kabum.com.br/produtos/fotos/334039/notebook-asus-amd-ryzen-5-3500u-8gb-ram-ssd-256gb-15-6-radeon-vega-8-windows-11-home-cinza-m515da-br1213w_1651244602_g.jpg" alt="Product">
+                  <h3>Notebook Asus AMD Ryzen 5-3500U, 8GB RAM, SSD 256GB, 15,6', Radeon Vega 8, Windows 11 Home, Cinza - M515DA-BR1213W</h3>
+                  <p>R$ 2.599,99</p>
+                  <a href="https://www.kabum.com.br/produto/334039/notebook-asus-amd-ryzen-5-3500u-8gb-ram-ssd-256gb-15-6-radeon-vega-8-windows-11-home-cinza-m515da-br1213w" class="btn">Comprar</a>
+              </div>
+              <div class="product">
+                <img src="https://images.kabum.com.br/produtos/fotos/130040/air-cooler-rise-mode-gamer-g800-180mm-rgb-rm-ac-o8-rgb_1663775981_m.jpg" alt="Product">
+                <h3>Air Cooler Rise Mode Gamer G800, 180mm, RGB - RM-AC-O8-RGB</h3>
+                <p>R$ 159,99</p>
+                <a href="https://www.kabum.com.br/produto/130040/air-cooler-rise-mode-gamer-g800-180mm-rgb-rm-ac-o8-rgb" class="btn">Comprar</a>
+            </div>
+            <div class="product">
+              <img src="https://img.terabyteshop.com.br/produto/g/memoria-ddr4-xpg-gammix-d10-8gb-3200mhz-cl16-black-ax4u32008g16a-sb10_121055.jpg" alt="Product">
+              <h3>Memória DDR4 XPG Gammix D10, 8GB 3200Mhz, CL16, Black, AX4U32008G16A-SB10</h3>
+              <p>R$ 159,90</p>
+              <a href="https://www.terabyteshop.com.br/produto/17935/memoria-ddr4-xpg-gammix-d10-8gb-3200mhz-cl16-black-ax4u32008g16a-sb10" class="btn">Comprar</a>
+          </div>
+            </div>
+        </div>
+    </section>
+    <footer>
+    </footer>
